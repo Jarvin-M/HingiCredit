@@ -1,0 +1,32 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class FI extends CI_Controller {
+
+	public function index()
+	{	
+	
+		//if(!$this->loggedin()){ redirect("home/index");}
+		
+			$data['title']="Admin | HingiCredit";
+			$data['author']="don brians";
+			
+			$this->load->view('head',$data);
+			$this->load->view('sysadmin/admin');
+		
+	}
+	
+	
+	public function create(){
+		$this->load->view('bank/create');
+	}
+	
+	
+	public function loggedin(){
+		if($this->session->userdata("type","role","email")){
+			return true;
+		} else{
+			return false;
+		}
+	}
+}
